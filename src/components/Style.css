@@ -1,0 +1,828 @@
+/* ========== IMPORT FONT ========== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
+
+/* ========== RESET DASAR ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ========== BODY ========== */
+body {
+    background: url('../BG/bg_electric.png') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #f8f9fa;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 120px; /* Tambahkan padding agar konten tidak tertutup footer sticky */
+}
+
+/* Optional lighting overlay (biar efek glass-nya lebih hidup) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(0, 200, 255, 0.12), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(22, 2, 17, 0.1), transparent 40%);
+    z-index: -1;
+}
+
+/* ========== NAVBAR (Glassmorphism) ========== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    border-radius: 12px;
+    margin: 10px 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.navbar h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00eaff;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 6px #00eaff, 0 0 12px #0077ff;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar ul li a {
+    color: #e6faff;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #00aaff;
+    box-shadow: 0 0 8px #00aaff;
+    transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #00aaff;
+}
+
+.navbar ul li a:hover::after {
+    width: 100%;
+}
+
+.navbar ul li a.active {
+    color: #00eaff;
+    text-shadow: 0 0 8px rgba(0, 234, 255, 0.6);
+}
+
+/* ========== CONTAINER UTAMA ========== */
+.container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ========== HEADER ========== */
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ccff;
+    border-bottom: 2px solid #00ccff;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px #00ccff;
+}
+
+/* ========== BUTTONS ========== */
+.action-button {
+    background: linear-gradient(135deg, #00aaff, #0077ff);
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 170, 255, 0.4);
+}
+
+.action-button:hover {
+    background: linear-gradient(135deg, #0088ff, #00ccff);
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px rgba(0, 204, 255, 0.6);
+}
+
+/* ========== TABLE ========== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+th, td {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    color: #f8f9fa;
+}
+
+th {
+    background: rgba(255, 255, 255, 0.15);
+    color: #00ccff;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ========== ACTION BUTTONS (Edit/Delete) ========== */
+.edit-btn, .delete-btn {
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.edit-btn:hover {
+    background-color: #ffcf3c;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #e94c5a;
+}
+
+/* ========== LINK MENU ========== */
+.menu-link {
+    margin-top: 20px;
+    display: block;
+    text-align: right;
+    color: #00ccff;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.menu-link:hover {
+    text-decoration: underline;
+}
+
+/* ========== SMART PAGINATION ========== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.pagination a {
+    padding: 10px 15px;
+    background: rgba(0, 204, 255, 0.1);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    color: #00ccff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    min-width: 40px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+}
+
+.pagination a:hover {
+    background: rgba(0, 204, 255, 0.25);
+    border-color: #00ccff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 204, 255, 0.3);
+    color: #fff;
+}
+
+.pagination a.active {
+    background: linear-gradient(135deg, #00ccff, #0077ff);
+    border-color: #00ccff;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.4);
+}
+
+/* Dots untuk skip pages */
+.pagination .dots {
+    padding: 10px 5px;
+    color: #00ccff;
+    font-weight: bold;
+    user-select: none;
+    opacity: 0.7;
+}
+
+/* Responsive untuk mobile */
+@media (max-width: 768px) {
+    .pagination {
+        gap: 5px;
+    }
+    
+    .pagination a {
+        padding: 8px 12px;
+        font-size: 13px;
+        min-width: 35px;
+    }
+    
+    .pagination .dots {
+        padding: 8px 3px;
+        font-size: 13px;
+    }
+}
+
+/* ========== BACK BUTTON (ELECTRIC STYLE) ========== */
+.back-button {
+    display: block;            
+    margin-top: 30px;
+    margin-left: auto;         
+    margin-right: 0;           
+    width: fit-content;        
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #009dff, #00ffff);
+    color: #000;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, #00ccff, #0077ff);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 204, 255, 0.9);
+}
+
+/* ========== BACK ICON ========== */
+.back-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.08);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+    text-decoration: none;
+    margin-top: 30px;
+    transition: 0.3s ease;
+}
+
+.back-icon i {
+    font-size: 20px;
+    color: #00eaff;
+    transition: 0.3s;
+}
+
+.back-icon:hover {
+    background: rgba(0, 255, 255, 0.18);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+}
+
+.back-icon:hover i {
+    transform: translateX(-4px);
+    filter: drop-shadow(0 0 6px #00eaff);
+}
+
+/* ========== FORM WRAPPER ========== */
+.form-container {
+    max-width: 480px;
+    max-height: 375px;
+    margin: 100px auto 60px auto;
+    padding: 35px 40px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 204, 255, 0.25);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 0 25px rgba(0, 204, 255, 0.08);
+    overflow-y: auto;
+}
+
+/* Scrollbar style untuk form container */
+.form-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 204, 255, 0.3);
+    border-radius: 8px;
+}
+
+.form-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 204, 255, 0.5);
+}
+
+/* ========== FORM ELEMENTS ========== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+label {
+    font-size: 13px;
+    color: #bdefff;
+    margin-bottom: 4px;
+}
+
+/* Text Input & Select */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+input[type="date"] {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 204, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: #e8f9ff;
+    font-size: 14px;
+    transition: all 0.25s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus,
+input[type="date"]:focus {
+    border-color: #00ccff;
+    box-shadow: 0 0 6px rgba(0, 204, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    outline: none;
+}
+
+/* ========== DROPDOWN FIX ========== */
+select {
+    appearance: none;
+    background: rgba(0, 20, 40, 0.6);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 6px;
+    color: #e6faff;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    border-color: #00ccff;
+    box-shadow: 0 0 8px rgba(0, 204, 255, 0.4);
+    outline: none;
+    background: rgba(0, 40, 70, 0.7);
+}
+
+select option {
+    background-color: #041420;
+    color: #e6faff;
+}
+
+select option:checked,
+select option:hover {
+    background-color: #0077ff !important;
+    color: #fff !important;
+}
+
+/* ========== RADIO GROUP ========== */
+.radio-group {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-behavior: smooth;
+}
+
+.radio-group::-webkit-scrollbar {
+    height: 6px;
+}
+
+.radio-group::-webkit-scrollbar-thumb {
+    background: rgba(0, 204, 255, 0.3);
+    border-radius: 8px;
+}
+
+.radio-group::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 204, 255, 0.5);
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 204, 255, 0.25);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.radio-item:hover {
+    background: rgba(0, 204, 255, 0.1);
+}
+
+.radio-item input[type="radio"] {
+    accent-color: #00ccff;
+}
+
+/* ========== SUBMIT BUTTON ========== */
+button[type="submit"] {
+    width: 100%;
+    margin-top: 45px;
+    background: linear-gradient(135deg, #009dff, #00ffff);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #00ccff, #0077ff);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 204, 255, 0.9);
+}
+
+/* ========== SCROLL SECTION ========== */
+.scroll-section {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.scroll-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroll-section::-webkit-scrollbar-thumb {
+    background: rgba(0, 204, 255, 0.3);
+    border-radius: 8px;
+}
+
+.scroll-section::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 204, 255, 0.5);
+}
+
+/* ========== INPUT DATE STYLING ========== */
+input[type="date"] {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(0,204,255,0.3);
+    border-radius: 8px;
+    padding: 10px 40px 10px 12px;
+    font-size: 14px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+}
+
+input[type="date"]::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: url('../icons/calendar-cyber.svg') no-repeat center;
+    background-size: contain;
+    pointer-events: none;
+    filter: drop-shadow(0 0 4px #00d4ff);
+}
+
+input[type="date"]:hover {
+    border-color: #00d4ff;
+    box-shadow: 0 0 8px rgba(0,212,255,0.4);
+    background: rgba(255,255,255,0.15);
+}
+
+/* ========== HARGA CELL ========== */
+.harga-cell {
+    text-align: right;
+    padding-right: 18px;
+    letter-spacing: 0.5px;
+    color: #f8f9fa;
+    text-shadow: 0 0 4px rgba(0, 204, 255, 0.6);
+}
+
+/* ========== HOME LANDING PAGE STYLES ========== */
+
+/* Hero Section */
+.hero-section {
+    max-width: 1200px;
+    margin: 60px auto 40px;
+    padding: 60px 40px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #00eaff;
+    text-shadow: 0 0 20px rgba(0, 234, 255, 0.6);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: #e6faff;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Stats Cards */
+.stats-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 204, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-card:hover::before {
+    opacity: 1;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    border-color: #00eaff;
+    box-shadow: 0 10px 30px rgba(0, 234, 255, 0.3);
+}
+
+.stat-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #00ccff;
+    filter: drop-shadow(0 0 10px rgba(0, 204, 255, 0.6));
+}
+
+.stat-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00eaff;
+    margin: 10px 0;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #bdefff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Quick Actions */
+.quick-actions {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.quick-actions h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ccff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.action-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 204, 255, 0.25);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.action-card:hover {
+    background: rgba(0, 204, 255, 0.15);
+    border-color: #00eaff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 234, 255, 0.3);
+}
+
+.action-icon {
+    font-size: 2.5rem;
+    color: #00ccff;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 8px rgba(0, 204, 255, 0.5));
+}
+
+.action-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: #00eaff;
+    margin-bottom: 10px;
+}
+
+.action-desc {
+    font-size: 0.95rem;
+    color: #bdefff;
+    line-height: 1.5;
+}
+
+/* ========== FOOTER INFO - STICKY ========== */
+.footer-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 15px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(0, 204, 255, 0.3);
+    color: #bdefff;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.footer-info p {
+    margin: 3px 0;
+    font-size: 0.9rem;
+}
+
+.footer-info p strong {
+    color: #00eaff;
+    text-shadow: 0 0 6px rgba(0, 234, 255, 0.5);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 140px;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .hero-section {
+        padding: 40px 20px;
+        margin: 40px 20px 30px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+    
+    .stats-container,
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-icon {
+        font-size: 2.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .container {
+        margin: 40px 20px;
+        padding: 20px;
+    }
+    
+    .form-container {
+        margin: 60px 20px;
+        padding: 25px 20px;
+    }
+}
