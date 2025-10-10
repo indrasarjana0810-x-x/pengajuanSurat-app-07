@@ -1,16 +1,9 @@
-import { Link } from "react-router-dom";
-
-function CardSurat({ surat }) {
+const CardSurat = ({ title, description, onClick, status }) => {
   return (
-    <div className="stat-card">
-      <h3 className="action-title">{surat.jenis}</h3>
-      <p className="action-desc"><strong>Nama:</strong> {surat.nama}</p>
-      <p className="action-desc"><strong>NPM:</strong> {surat.npm}</p>
-      <Link to={`/detail/${surat.id}`} className="action-button">
-        Lihat Detail
-      </Link>
+    <div className="surat-card" onClick={onClick}>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      {status && <StatusBadge status={status} />}
     </div>
   );
-}
-
-export default CardSurat;
+};
