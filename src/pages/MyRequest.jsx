@@ -23,7 +23,7 @@ export default function MyRequests() {
       customClass: {
         popup: "swal-custom-popup",
         confirmButton: "swal-confirm-button",
-        cancelButton: "swal-cancel-button" // Tambahkan custom class untuk tombol Batal
+        cancelButton: "swal-cancel-button" // Custom class untuk tombol Batal
       },
     }).then((result) => {
       if (result.isConfirmed) {
@@ -55,12 +55,11 @@ export default function MyRequests() {
           <p>Belum ada pengajuan surat yang dibuat. Silakan buat pengajuan baru!</p>
         </div>
       ) : (
-        <div className="request-list"> {/* Ini akan menjadi Grid/Flex container */}
+        <div className="request-list"> {/* Grid/Flex container */}
           {items.map((i) => (
-            <div key={i.id} className="request-item-card"> {/* Ini adalah setiap kartu item */}
+            <div key={i.id} className="request-item-card"> {/* kartu item */}
               <RequestCard request={i} />
               
-              {/* Tombol hapus di-styling ulang */}
               <button
                 className="btn-delete"
                 onClick={() => handleDelete(i.id)}

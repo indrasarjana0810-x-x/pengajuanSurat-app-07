@@ -23,7 +23,6 @@ export default function RequestCard({ request, onApprove, onReject }) {
                 </span>
             </p>
 
-            {/* MENGGUNAKAN CLASS CSS YANG BENAR */}
             {onApprove && onReject && isPending && (
                 <div className="approval-actions">
                     <button 
