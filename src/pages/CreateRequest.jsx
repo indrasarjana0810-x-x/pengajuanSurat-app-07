@@ -1,7 +1,7 @@
 import React from "react";
 import RequestForm from "../components/RequestForm";
 import { loadRequests, saveRequests } from "../components/utils/storage";
-import Swal from "sweetalert2"; // Import SweetAlert2
+import Swal from "sweetalert2"; 
 
 export default function CreateRequest() {
   function handleSubmit(data) {

@@ -32,7 +32,7 @@ export default function Approvals() {
   return (
     <div className="page-wrapper">
       <div className="page-header">
-        <h1>Halaman Persetujuan Surat</h1>
+        <h1>Persetujuan Pengajuan Surat</h1>
       </div>
       
       {pendingItems.length === 0 ? (

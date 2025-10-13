@@ -6,10 +6,10 @@ import photoC from '../components/Profile/Me.jpeg';
 import photoD from '../components/Profile/Me.jpeg';
 
 const teamMembers = [
-  { name: "Nama Anda (Ketua)", role: "Full-stack Developer", photo: photoA },
-  { name: "Anggota B", role: "Front-end Developer", photo: photoB },
-  { name: "Anggota C", role: "UI/UX Designer", photo: photoC },
-  { name: "Anggota D", role: "Technical Writer", photo: photoD },
+  { name: "Puji Yayang Handriani", photo: photoA },
+  { name: "Indra Sukma Nugraha", photo: photoB },
+  { name: "Muhammad Alif Fadhillah", photo: photoC },
+  { name: "Adhitya Tubagus Syahroni", photo: photoD },
 ];
 
 export default function About() {
@@ -41,7 +41,6 @@ export default function About() {
     <div className="page-wrapper about-page">
       <div className="page-header">
         <h1>Tentang Proyek & Tim Kami</h1>
-        <p>Tinjauan singkat tentang proyek ini dan tim pengembang di baliknya.</p>
       </div>
       
       <div className="about-content">

@@ -9,7 +9,12 @@
 }
 
 body {
-  background: url('../Background/IMG_Background.jpg') no-repeat center center fixed;
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    url('../Background/IMG_Background.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #1a1a1a;
   min-height: 100vh;
@@ -27,6 +32,7 @@ body::before {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(1.5px);
   backdrop-filter: blur(1.5px);
   z-index: -1;
 }
@@ -41,6 +47,7 @@ body::before {
   max-width: 1200px;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
@@ -65,7 +72,31 @@ body::before {
   color: #1674e1;
   letter-spacing: 1px;
 }
+/* === LOGO STYLE === */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
 
+.logo-icon {
+  width: 30px;
+  height: 30px;
+  color: #1674e1;
+}
+
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #1674e1;
+  letter-spacing: 0.5px;
+}
+
+.logo-text .highlight {
+  color: #005fa3;
+}
 .navbar ul {
   list-style: none;
   display: flex;
@@ -83,6 +114,7 @@ body::before {
   padding: 5px 0;
   display: inline-block;
   overflow: hidden;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar ul li a::after {
@@ -99,6 +131,7 @@ body::before {
 
 .navbar ul li a:hover {
   color: #005fa3;
+  transform: translateY(-2px);
 }
 
 .navbar ul li a:hover::after {
@@ -120,6 +153,7 @@ body::before {
   margin: 40px auto;
   padding: 80px 40px;
   background: rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);
   border-radius: 24px;
   text-align: center;
@@ -186,6 +220,7 @@ body::before {
 
 .action-card {
   background: rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 16px;
@@ -307,6 +342,7 @@ body::before {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
 
@@ -347,6 +383,7 @@ body::before {
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);
   transition: all 0.3s ease;
 }
@@ -450,6 +487,7 @@ button[type="submit"]:hover,
 
 .request-item-card {
   background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border-radius: 16px;
   padding: 25px;
@@ -652,6 +690,7 @@ button[type="submit"]:hover,
 /* === SWEETALERT2 CUSTOM STYLES === */
 .swal2-popup.swal-custom-popup {
   background: rgba(255, 255, 255, 0.9) !important;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 18px !important;
   border: 1px solid rgba(255, 255, 255, 0.9);
@@ -728,6 +767,7 @@ button[type="submit"]:hover,
 
 .project-details-card {
     background: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
     border-radius: 16px;
     padding: 30px;
@@ -782,7 +822,7 @@ button[type="submit"]:hover,
     overflow-x: auto; 
     scroll-snap-type: x mandatory; 
     gap: 30px;
-    /* Memberikan padding yang sangat besar untuk memastikan shadow pop-up tidak terpotong */
+    /* Padding supaya shadow pop-up tidak terpotong */
     padding: 40px 100px 40px 100px;
     max-width: 100%;
     margin: 0 auto 20px;
@@ -798,10 +838,11 @@ button[type="submit"]:hover,
 .team-member-card {
     /* Lebar tetap untuk setiap item carousel */
     flex: 0 0 280px; 
-    /* KRITIS: Ubah scroll-snap-align ke center agar pop-up di tengah viewport */
+    /* Untuk ubah scroll-snap-align ke center agar pop-up di tengah viewport */
     scroll-snap-align: center; 
     
     background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     border-radius: 16px;
     padding: 20px;
@@ -811,17 +852,16 @@ button[type="submit"]:hover,
     /* Transisi untuk efek highlight dinamis */
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
     position: relative;
-    /* KRITIS: Agar pop-up tidak terpotong oleh overflow scroll pada item */
+    /* Agar pop-up tidak terpotong oleh overflow scroll pada item */
     overflow: visible; 
     /* Styling dasar saat tidak aktif */
     opacity: 0.8; 
     transform: none; 
 }
 
-/* Styling untuk kartu yang sedang aktif (dikelola oleh state React) */
+/* Styling untuk card aktif (dikelola oleh state React) */
 .team-member-card.active-highlight {
     opacity: 1;
-    /* Terapkan efek pop-up yang sama dramatisnya dengan hover */
     transform: translateY(-8px) scale(1.05); 
     box-shadow: 0 15px 25px rgba(0, 123, 255, 0.4); 
     background: rgba(255, 255, 255, 0.8); 
@@ -829,7 +869,7 @@ button[type="submit"]:hover,
 }
 
 .team-member-card:hover {
-    /* Efek Pop-up (highlight dinamis) saat hover (dijaga agar tetap ada) */
+    /* Efek Pop-up (highlight dinamis) saat hover */
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 15px 25px rgba(0, 123, 255, 0.4); 
     background: rgba(255, 255, 255, 0.8); 
