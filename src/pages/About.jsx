@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-import photoA from '../components/Profile/Me.jpeg'; 
+import photoA from '../components/Profile/puji.jpg'; 
 import photoB from '../components/Profile/Me.jpeg';
 import photoC from '../components/Profile/Me.jpeg';
 import photoD from '../components/Profile/Me.jpeg';
