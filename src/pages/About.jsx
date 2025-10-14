@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import FloatingLogos from "../components/FloatingLogos";
 
 import photoA from "../components/Profile/puji.jpg";
 import photoB from "../components/Profile/Me.jpeg";
@@ -16,29 +17,35 @@ export default function About() {
   const [activeIndex, setActiveIndex] = useState(0);
   const gridRef = useRef(null);
 
+  // 🧠 Auto-scroll setiap 4 detik
   useEffect(() => {
-    // Logic untuk auto-scroll setiap 4 detik (4000ms)
     const timer = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % teamMembers.length);
     }, 4000);
-
     return () => clearInterval(timer);
   }, []);
 
+  // 🎯 Scroll kartu aktif ke tengah
   useEffect(() => {
-    // Logic untuk menggulir kartu aktif ke tengah view
     const gridElement = gridRef.current;
     if (gridElement && gridElement.children[activeIndex]) {
       gridElement.children[activeIndex].scrollIntoView({
         behavior: "smooth",
         block: "nearest",
-        inline: "center", // Memastikan kartu berada di tengah viewport
+        inline: "center",
       });
     }
   }, [activeIndex]);
 
+  // 🧩 Return utama halaman About
   return (
-    <div className="page-wrapper about-page">
+    <div
+      className="page-wrapper about-page"
+      style={{ position: "relative", overflow: "hidden" }}
+    >
+      {/* 🌈 Logo animasi melayang di background */}
+      <FloatingLogos />
+
       <div className="page-header">
         <h1>Tentang Proyek & Tim Kami</h1>
       </div>
@@ -68,14 +75,11 @@ export default function About() {
 
       <h2 className="team-section-header">Tim Pengembang (Kelompok 07)</h2>
 
-      {/* Container scroll horizontal (Carousel) */}
+      {/* Carousel anggota tim */}
       <div className="team-grid" ref={gridRef}>
-        {/* Scroll spacers dihapus dari JSX. Spacing di tepi dikelola via CSS padding di .team-grid */}
-
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            // Menambahkan class highlight berdasarkan state aktif
             className={`team-member-card ${
               index === activeIndex ? "active-highlight" : ""
             }`}
