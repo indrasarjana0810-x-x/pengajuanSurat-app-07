@@ -5,55 +5,29 @@ import { motion } from "framer-motion";
 
 const icons = {
   Buat: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="40"
-      height="40"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-      <path d="M10 13H7" />
-      <path d="M17 17H7" />
-      <path d="M17 10H7" />
-    </svg>
+    <lord-icon
+      src="https://cdn.lordicon.com/hmpomorl.json"
+      trigger="hover"
+      state="hover-unfold"
+      colors="primary:#121331,secondary:#2516c7"
+      style={{ width: "60px", height: "60px" }}
+    ></lord-icon>
   ),
   Riwayat: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="40"
-      height="40"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
-    </svg>
+    <lord-icon
+      src="https://cdn.lordicon.com/gdowkrjt.json"
+      trigger="hover"
+      stroke="light"
+      colors="primary:#000000,secondary:#e4e4e4,tertiary:#4bb3fd,quaternary:#e83a30"
+      style={{ width: "140px", height: "140px" }}
+    ></lord-icon>
   ),
   Approval: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="40"
-      height="40"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20 13c0 5-6 9-8 9s-8-4-8-9V5l8-3 8 3z" />
-      <path d="m9 12 2 2 4-4" />
-    </svg>
+    <lord-icon
+      src="https://cdn.lordicon.com/ciwxnydt.json"
+      trigger="hover"
+      style={{ width: "160px", height: "160px" }}
+    ></lord-icon>
   ),
 };
 
