@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 import FloatingLogos from "../components/FloatingLogos";
 
 import photoA from "../components/Profile/puji.jpg";
@@ -16,6 +18,7 @@ const teamMembers = [
 export default function About() {
   const [activeIndex, setActiveIndex] = useState(0);
   const gridRef = useRef(null);
+  const [clicked, setClicked] = useState(false);
 
   // 🧠 Auto-scroll setiap 4 detik
   useEffect(() => {
@@ -39,17 +42,25 @@ export default function About() {
 
   // 🧩 Return utama halaman About
   return (
-    <div
+    <motion.div
       className="page-wrapper about-page"
       style={{ position: "relative", overflow: "hidden" }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{
+        opacity: 1,
+        scale: clicked ? 1 : 1, // animasi kecil ketika klik
+      }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      onClick={() => {
+        setClicked(true);
+        setTimeout(() => setClicked(false), 400); // reset animasi setelah selesai
+      }}
     >
       {/* 🌈 Logo animasi melayang di background */}
       <FloatingLogos />
-
       <div className="page-header">
         <h1>Tentang Proyek & Tim Kami</h1>
       </div>
-
       <div className="about-content">
         <div className="project-details-card">
           <h2>Detail Proyek</h2>
@@ -99,6 +110,6 @@ export default function About() {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
